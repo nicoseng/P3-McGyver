@@ -2,6 +2,7 @@
 
 import random 
 
+
 class Item :
 	
 	"""Class for displaying items randomly in the maze"""

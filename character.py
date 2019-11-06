@@ -1,5 +1,6 @@
 # -*-coding:Utf-8 -*
 
+
 class Character:
 	""" Class for creating and moving the character"""
 
