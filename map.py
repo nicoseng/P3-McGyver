@@ -20,10 +20,6 @@ class Map :
 				line = line.strip()
 				self.map.append(list(line))
 
-	def display_map(self,labyrinth):
-		for line in labyrinth :
-			for case in line:
-				print(case, end= "") # for deleting the brackets
-			print("")
+
 
 	

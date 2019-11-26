@@ -1,7 +1,7 @@
 # -*-coding:Utf-8 -*
 
-
 class Character:
+	
 	""" Class for creating and moving the character"""
 
 	def __init__(self,labyrinth,pos_x,pos_y):
@@ -11,6 +11,7 @@ class Character:
 		
 	
 	def move_left(self,labyrinth):
+
 		if labyrinth[self.pos_x][self.pos_y - 1] != "#":
 			labyrinth[self.pos_x][self.pos_y - 1] = "M"
 			labyrinth[self.pos_x][self.pos_y] = "_"
@@ -20,6 +21,7 @@ class Character:
 			print("Vous êtes face à un mur, déplacement impossible.")
 
 	def move_right(self,labyrinth):
+		
 		if labyrinth[self.pos_x][self.pos_y + 1] != "#":
 			labyrinth[self.pos_x][self.pos_y + 1] = "M"
 			labyrinth[self.pos_x][self.pos_y] = "_"
@@ -29,6 +31,7 @@ class Character:
 			print("Vous êtes face à un mur, déplacement impossible.")
 
 	def move_up(self,labyrinth):
+		
 		if labyrinth[self.pos_x - 1][self.pos_y] != "#":
 			labyrinth[self.pos_x - 1][self.pos_y] = "M"
 			labyrinth[self.pos_x][self.pos_y] = "_"
@@ -49,11 +52,13 @@ class Character:
 		
 	
 	def nb_item_picked(self,labyrinth,symbol):
-	
-		self.inventory.append(symbol)
-		print("Vous avez récupéré:",symbol)
-		print(self.inventory)
-		print("Nombre d'objets récupérés : {}/3".format(len(self.inventory)))	
+		
+		if not symbol in self.inventory:
+
+			self.inventory.append(symbol)
+			print("Vous avez récupéré:",symbol)
+			print(self.inventory)
+			print("Nombre d'objets récupérés : {}/3".format(len(self.inventory)))
 
 		
 				

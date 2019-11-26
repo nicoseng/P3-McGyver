@@ -2,5 +2,5 @@
 
 from gameboard import GameBoard
 
-labyrinth = GameBoard()
-labyrinth.load_game()
+level = GameBoard()
+level.load_game()
