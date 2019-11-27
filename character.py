@@ -1,5 +1,7 @@
 # -*-coding:Utf-8 -*
 
+from parameters import *
+
 class Character:
 	
 	""" Class for creating and moving the character"""
@@ -58,7 +60,8 @@ class Character:
 			self.inventory.append(symbol)
 			print("Vous avez récupéré:",symbol)
 			print(self.inventory)
-			print("Nombre d'objets récupérés : {}/3".format(len(self.inventory)))
+			print("Items collected : {}/3".format(len(self.inventory)))
+			window.blit(item_text,item_text_rect)
 
 		
 				

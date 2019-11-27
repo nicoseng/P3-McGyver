@@ -2,21 +2,21 @@
 
 import pygame
 from pygame.locals import *
-from constantes import *
+from parameters import *
 
 class Labyrinth:
 	
-	""" This class displays the labyrinth with Pygame"""
+	""" This class contains the graphic structure of the labyrinth"""
 
 	def __init__(self,labyrinth):
 
 		pygame.init()
 
-		line_position = 0 # we go from the first line at the beginning
+		line_position = 0 # we start from the first line at the beginning
 			
 		for line in labyrinth:
 						
-			element_position = 0 # we go from the first element at the beginning
+			element_position = 0 # we start from the first element at the beginning
 			
 			for element in line:
 
@@ -46,5 +46,18 @@ class Labyrinth:
 
 				element_position = element_position + 1
 			line_position = line_position + 1
+
+
+	def win_game(self):
+		# When the player wins the game, we display a text.
+		window.blit(win_text,win_text_rect)
+		
+		
+	def lose_game (self):
+		# When the player loses the game, we display a text.	
+		window.blit(lose_text,lose_text_rect)
+
+		
+
 
 	

@@ -6,11 +6,11 @@ from item import Item
 from labyrinth import Labyrinth
 import pygame
 from pygame.locals import *
-from constantes import *
+from parameters import *
 
 class GameBoard:
 
-	"""This class defines the level of the maze with the differents elements included inside"""
+	"""This class extracts the differents elements included in the labyrinth : Map, characters, items"""
 
 	def __init__(self):
 
@@ -22,7 +22,6 @@ class GameBoard:
 		self.ether = Item(self.labyrinth.map)
 		self.ether.display_item(self.labyrinth.map,"E")
 		
-
 		self.tube = Item(self.labyrinth.map)
 		self.tube.display_item(self.labyrinth.map,"T")
 
@@ -31,8 +30,6 @@ class GameBoard:
 		
 
 	def load_game(self):
-
-		# load the labyrinth 
 
 		continue_game = True 
 
@@ -46,25 +43,26 @@ class GameBoard:
 
 			pygame.time.Clock().tick(30)
 
-			labyrinth_display = Labyrinth(self.labyrinth.map)
-
+			# We display the labyrinth graphically from the file labyrinth.py
+			labyrinth = Labyrinth(self.labyrinth.map)
+			
 			for event in pygame.event.get():
 
-					if event.type == QUIT:
-						continue_game = False
+				if event.type == QUIT:
+					continue_game = False
+				
+				elif event.type == KEYDOWN:
+					if event.key == K_UP:
+						self.macgyver.move_up(self.labyrinth.map)
 					
-					elif event.type == KEYDOWN:
-						if event.key == K_UP:
-							self.macgyver.move_up(self.labyrinth.map)
-						
-						if event.key == K_DOWN:
-							self.macgyver.move_down(self.labyrinth.map)
+					if event.key == K_DOWN:
+						self.macgyver.move_down(self.labyrinth.map)
 
-						if event.key == K_LEFT:
-							self.macgyver.move_left(self.labyrinth.map)
+					if event.key == K_LEFT:
+						self.macgyver.move_left(self.labyrinth.map)
 
-						if event.key == K_RIGHT:
-							self.macgyver.move_right(self.labyrinth.map)				
+					if event.key == K_RIGHT:
+						self.macgyver.move_right(self.labyrinth.map)				
 
 					if self.labyrinth.map[self.macgyver.pos_x][self.macgyver.pos_y] == self.labyrinth.map[self.ether.pos_x][self.ether.pos_y]:
 						self.macgyver.nb_item_picked(self.labyrinth,"E")
@@ -80,20 +78,17 @@ class GameBoard:
 						self.macgyver.nb_item_picked(self.labyrinth.map,"N")
 						self.labyrinth.map[self.needle.pos_x][self.needle.pos_y] = "M"
 						
-
 					# End of the game 
 					if self.labyrinth.map[self.macgyver.pos_x][self.macgyver.pos_y] == self.labyrinth.map[self.guardian.pos_x][self.guardian.pos_y]:
 						if len(self.macgyver.inventory) == 3: 
 							self.labyrinth.map[self.macgyver.pos_x][self.macgyver.pos_y] = "M"
-							continue_game = False
-							while continue_game == False : 
-								window.blit(win_text_surface,(300,300))
-							
+							labyrinth.win_game()
+							continue_game = False 
 
 						else : 
-							window.blit(lose_text_surface,(300,300))
+							labyrinth.lose_game()
 							continue_game = False
-									
+												
 			pygame.display.flip()	
 
 
