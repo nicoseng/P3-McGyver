@@ -1,11 +1,11 @@
 # -*-coding:Utf-8 -*
 
-class Map :
+class MapSelector :
 
-	"""This class aims to display the labyrinth"""
+	"""This class is used to choose the map from a file ending by .txt"""
 
 	def __init__(self):
-		
+
 		print("Bonjour et bienvenue dans notre jeu de labyrinthe !")
 
 		map_name = input("Veuillez entrer le nom du fichier (.txt) : ")
@@ -13,7 +13,7 @@ class Map :
 		
 		self.name = map_name
 		self.map = list() 
-
+		
 		with open(map_name,"r") as map : 
 			for line in map : 
 				# We add each line in self.map and delete spaces characters or backlines with .strip()

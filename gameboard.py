@@ -1,94 +1,84 @@
 # -*-coding:Utf-8 -*
 
-from map import Map
+from mapSelector import MapSelector
 from character import Character
-from item import Item
-from labyrinth import Labyrinth
+from itemMgmt import ItemMgmt
+from displayer import Displayer
+from keyMgmt import KeyMgmt
 import pygame
 from pygame.locals import *
 from parameters import *
 
 class GameBoard:
 
-	"""This class extracts the differents elements included in the labyrinth : Map, characters, items"""
+	"""This class is used to define the differents elements included in the labyrinth : Map, characters, items"""
 
 	def __init__(self):
 
-		self.labyrinth = Map()
+		self.labyrinth = MapSelector()
 
 		self.macgyver = Character(self.labyrinth.map,0,0)
 		self.guardian = Character(self.labyrinth.map,14,13)
 
-		self.ether = Item(self.labyrinth.map)
-		self.ether.display_item(self.labyrinth.map,"E")
-		
-		self.tube = Item(self.labyrinth.map)
-		self.tube.display_item(self.labyrinth.map,"T")
+		self.ether = ItemMgmt(self.labyrinth.map)
+		self.ether.position_item(self.labyrinth.map,"E")
 
-		self.needle = Item(self.labyrinth.map)
-		self.needle.display_item(self.labyrinth.map,"N")
-		
+		self.tube = ItemMgmt(self.labyrinth.map)
+		self.tube.position_item(self.labyrinth.map,"T")
 
+		self.needle = ItemMgmt(self.labyrinth.map)
+		self.needle.position_item(self.labyrinth.map,"N")
+
+		self.map_loader = Displayer()
+		self.key_controller = KeyMgmt()
+		
+		
 	def load_game(self):
 
-		continue_game = True 
+		pygame.init()
 
-		pygame.key.set_repeat(400,30)
+		pygame.key.set_repeat(400,30) 	
 
-		pygame.display.flip()
+		continue_game = True
 
 		while continue_game:
 
-			pygame.init()
-
 			pygame.time.Clock().tick(30)
 
-			# We display the labyrinth graphically from the file labyrinth.py
-			labyrinth = Labyrinth(self.labyrinth.map)
+			# We load the map to display it on the game board.
+			self.map_loader.display_map(self.labyrinth.map)
+
+			# To display the number of items picked by the player on the screen
+			self.map_loader.display_inventory(self.macgyver.inventory)
 			
-			for event in pygame.event.get():
-
-				if event.type == QUIT:
-					continue_game = False
+			# To activate the keys available for the game.
+			self.key_controller.select_key(self.labyrinth.map,self.macgyver)
+			
+			# To play the game properly speaking
+			if self.labyrinth.map[self.macgyver.pos_x][self.macgyver.pos_y] == self.labyrinth.map[self.ether.pos_x][self.ether.pos_y]:
+				self.macgyver.pick_item(self.labyrinth.map,"E")
+				self.map_loader.display_inventory(self.macgyver.inventory)
+				self.labyrinth.map[self.ether.pos_x][self.ether.pos_y] = "M"
+						
+			if self.labyrinth.map[self.macgyver.pos_x][self.macgyver.pos_y] == self.labyrinth.map[self.tube.pos_x][self.tube.pos_y]:
+				self.macgyver.pick_item(self.labyrinth.map,"T")
+				self.map_loader.display_inventory(self.macgyver.inventory)
+				self.labyrinth.map[self.tube.pos_x][self.tube.pos_y] = "M"
 				
-				elif event.type == KEYDOWN:
-					if event.key == K_UP:
-						self.macgyver.move_up(self.labyrinth.map)
-					
-					if event.key == K_DOWN:
-						self.macgyver.move_down(self.labyrinth.map)
-
-					if event.key == K_LEFT:
-						self.macgyver.move_left(self.labyrinth.map)
-
-					if event.key == K_RIGHT:
-						self.macgyver.move_right(self.labyrinth.map)				
-
-					if self.labyrinth.map[self.macgyver.pos_x][self.macgyver.pos_y] == self.labyrinth.map[self.ether.pos_x][self.ether.pos_y]:
-						self.macgyver.nb_item_picked(self.labyrinth,"E")
-						self.labyrinth.map[self.ether.pos_x][self.ether.pos_y] = "M"
-						
-
-					if self.labyrinth.map[self.macgyver.pos_x][self.macgyver.pos_y] == self.labyrinth.map[self.tube.pos_x][self.tube.pos_y]:
-						self.macgyver.nb_item_picked(self.labyrinth,"T")
-						self.labyrinth.map[self.tube.pos_x][self.tube.pos_y] = "M"
-						
-
-					if self.labyrinth.map[self.macgyver.pos_x][self.macgyver.pos_y] == self.labyrinth.map[self.needle.pos_x][self.needle.pos_y]:
-						self.macgyver.nb_item_picked(self.labyrinth.map,"N")
-						self.labyrinth.map[self.needle.pos_x][self.needle.pos_y] = "M"
-						
-					# End of the game 
-					if self.labyrinth.map[self.macgyver.pos_x][self.macgyver.pos_y] == self.labyrinth.map[self.guardian.pos_x][self.guardian.pos_y]:
-						if len(self.macgyver.inventory) == 3: 
-							self.labyrinth.map[self.macgyver.pos_x][self.macgyver.pos_y] = "M"
-							labyrinth.win_game()
-							continue_game = False 
-
-						else : 
-							labyrinth.lose_game()
-							continue_game = False
-												
+			if self.labyrinth.map[self.macgyver.pos_x][self.macgyver.pos_y] == self.labyrinth.map[self.needle.pos_x][self.needle.pos_y]:
+				self.macgyver.pick_item(self.labyrinth.map,"N")
+				self.map_loader.display_inventory(self.macgyver.inventory)
+				self.labyrinth.map[self.needle.pos_x][self.needle.pos_y] = "M"
+ 
+			if self.labyrinth.map[self.macgyver.pos_x][self.macgyver.pos_y] == self.labyrinth.map[self.guardian.pos_x][self.guardian.pos_y]:
+				if len(self.macgyver.inventory) == 3: 
+					self.labyrinth.map[self.macgyver.pos_x][self.macgyver.pos_y] = "M"
+					self.map_loader.display_victory_text()
+					self.map_loader.display_stop_game()
+				else : 
+					self.map_loader.display_failure_text()
+					self.map_loader.display_stop_game()	
+			
 			pygame.display.flip()	
 
 

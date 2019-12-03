@@ -2,7 +2,7 @@
 
 import random 
 
-class Item :
+class ItemMgmt :
 	
 	"""This class displays items randomly in the labyrinth."""
 
@@ -16,7 +16,7 @@ class Item :
 			self.pos_x = random.randint(0,14)
 			self.pos_y = random.randint(0,14)
 
-	def display_item(self,labyrinth,symbol):
+	def position_item(self,labyrinth,symbol):
 		
 		labyrinth[self.pos_x][self.pos_y] = symbol
 
