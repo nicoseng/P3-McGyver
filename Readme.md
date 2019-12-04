@@ -18,7 +18,7 @@ La carte intitulée map.txt est prise en charge dans un « Sélecteur de carte �
 
 III°) Jouer au jeu 
 
-	L’objectif du jeu est d’amener notre héros Macgyver vers la sortie du labyrinthe située sur la case où se trouve le gardien. Pour ce faire, notre héros doit au préalable récupérer 3 objets (éther, tube et aiguille) disséminés au hasard dans le labyrinthe afin de pouvoir créer une seringue destinée à endormir le gardien et ainsi rejoindre la sortie. L’obtention des trois objets lors de la présentation au gardien permet alors de remporter de la partie. A défaut de ces objets, le héros meurt et le joueur perd la partie.
+L’objectif du jeu est d’amener notre héros Macgyver vers la sortie du labyrinthe située sur la case où se trouve le gardien. Pour ce faire, notre héros doit au préalable récupérer 3 objets (éther, tube et aiguille) disséminés au hasard dans le labyrinthe afin de pouvoir créer une seringue destinée à endormir le gardien et ainsi rejoindre la sortie. L’obtention des trois objets lors de la présentation au gardien permet alors de remporter de la partie. A défaut de ces objets, le héros meurt et le joueur perd la partie.
 
 •	Se déplacer dans le labyrinthe
         o   Appuyer au choix sur les flèches directionnelles. Le héros ne peut se déplacer que sur des cases vides.
