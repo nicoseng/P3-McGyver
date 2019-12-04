@@ -1,4 +1,5 @@
-# -*-coding:Utf-8 -*
+#! /usr/bin/env/python3.7.3
+# coding: utf-8 
 
 import random 
 

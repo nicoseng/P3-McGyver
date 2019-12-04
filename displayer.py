@@ -1,8 +1,10 @@
-# -*-coding:Utf-8 -*
+#! /usr/bin/env/python3.7.3
+# coding: utf-8 
 
 import pygame
 from pygame.locals import *
 from parameters import *
+from keyMgmt import KeyMgmt
 
 class Displayer:
 	
@@ -23,8 +25,7 @@ class Displayer:
 
 		self.ether_img = pygame.image.load("ressource/ether.png").convert_alpha()
 		self.tube_img = pygame.image.load("ressource/tube.png").convert_alpha()
-		self.needle_img = pygame.image.load("ressource/aiguille.png").convert_alpha() 
-
+		self.needle_img = pygame.image.load("ressource/aiguille.png").convert_alpha()
 
 	# This function aims to display the map graphically on the screen
 	def display_map(self,labyrinth):
@@ -89,16 +90,7 @@ class Displayer:
 		
 	def display_stop_game(self):
 		stop_font = pygame.font.Font("roboto/Roboto-Medium.ttf",20)
-		stop_text = stop_font.render("Press any button to exit",True, white)
+		stop_text = stop_font.render("Press q to exit",True, white)
 		stop_text_rect = stop_text.get_rect()
 		stop_text_rect.centerx, stop_text_rect.centery = labyrinth_size / 2, labyrinth_size / 3 # to center the text
 		self.window.blit(stop_text,stop_text_rect)
-		
-
-
-		
-
-		
-
-
-	

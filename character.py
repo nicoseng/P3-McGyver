@@ -1,4 +1,5 @@
-# -*-coding:Utf-8 -*
+#! /usr/bin/env/python3.7.3
+# coding: utf-8 
 
 class Character:
 	
@@ -9,7 +10,6 @@ class Character:
 		self.pos_y = pos_y # pos_y stands for position in column
 		self.inventory = []
 		
-	
 	def move_left(self,labyrinth):
 
 		if labyrinth[self.pos_x][self.pos_y - 1] != "#":
@@ -50,19 +50,9 @@ class Character:
 		else:
 			print("Vous êtes face à un mur, déplacement impossible.")
 		
-	
 	def pick_item(self,labyrinth,symbol):
 		
 		if not symbol in self.inventory:
 
 			self.inventory.append(symbol)
-			"""print("Vous avez récupéré:",symbol)
-			print(self.inventory)
-			print("Items collected : {}/3".format(len(self.inventory)))"""
 			
-
-		
-				
-		
-
-		

@@ -1,7 +1,9 @@
-# -*-coding:Utf-8 -*
+#! /usr/bin/env/python3.7.3
+# coding: utf-8 
 
 import pygame
 from pygame.locals import *
+import sys
 
 
 class KeyMgmt:
@@ -12,13 +14,15 @@ class KeyMgmt:
 
 		for event in pygame.event.get():
 
+			# to exit the game
 			if event.type == QUIT:
-				continue_game = False
+				sys.exit()
 		
 			elif event.type == KEYDOWN:
 
+				# to exit the game anytime or at the end of the game
 				if event.key == K_q:
-					continue_game = False
+					sys.exit()
 				
 				if event.key == K_UP:
 					character.move_up(labyrinth)
@@ -31,3 +35,4 @@ class KeyMgmt:
 
 				if event.key == K_RIGHT:
 					character.move_right(labyrinth)
+

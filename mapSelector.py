@@ -1,4 +1,5 @@
-# -*-coding:Utf-8 -*
+#! /usr/bin/env/python3.7.3
+# coding: utf-8 
 
 class MapSelector :
 
@@ -19,7 +20,3 @@ class MapSelector :
 				# We add each line in self.map and delete spaces characters or backlines with .strip()
 				line = line.strip()
 				self.map.append(list(line))
-
-
-
-	
