@@ -11,7 +11,7 @@ class ItemMgmt :
 		
 		self.pos_x = 0
 		self.pos_y = 0
-		self.picked = False
+		
 		
 		while labyrinth[self.pos_x][self.pos_y] != "_":
 			self.pos_x = random.randint(0,14)

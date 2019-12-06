@@ -81,13 +81,15 @@ class Displayer:
 		win_text_rect.centerx, win_text_rect.centery = labyrinth_size / 2, labyrinth_size / 2 # to center the text
 		self.window.blit(win_text,win_text_rect)
 
+	# When the player loses the game, we display a failure text.
 	def display_failure_text(self):
 		lose_font = pygame.font.Font("roboto/Roboto-Medium.ttf",30)
 		lose_text = lose_font.render("You lose !",True, red)
 		lose_text_rect = lose_text.get_rect()
 		lose_text_rect.centerx, lose_text_rect.centery = labyrinth_size / 2, labyrinth_size / 2 # to center the text
 		self.window.blit(lose_text,lose_text_rect)
-		
+	
+	# to indicate to the player how to exit the game
 	def display_stop_game(self):
 		stop_font = pygame.font.Font("roboto/Roboto-Medium.ttf",20)
 		stop_text = stop_font.render("Press q to exit",True, white)
