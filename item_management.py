@@ -3,7 +3,7 @@
 
 import random 
 
-class ItemMgmt :
+class ItemManagement :
 	
 	"""This class displays items randomly in the labyrinth."""
 

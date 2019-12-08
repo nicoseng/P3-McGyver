@@ -6,7 +6,7 @@ from pygame.locals import *
 import sys
 
 
-class KeyMgmt:
+class KeyManagement:
 
 	""" This class manages the different keys available for the game."""
 	

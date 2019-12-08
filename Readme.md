@@ -14,7 +14,7 @@ II°) Activer le jeu
     1.	 Dans le terminal, entrer python3 main.py. Ce dernier correspond au fichier principal du jeu. 
     2.	 Dans le terminal, entrer le nom du fichier contenant la carte sous forme « brut » : map.txt. La carte correspondant s’affiche graphiquement sur votre écran. 
 
-La carte intitulée map.txt est prise en charge dans un « Sélecteur de carte » (Class MapSelector). Chaque ligne contenue dans carte.txt est ajoutée à une liste initialement vide. Cette étape permet de générer la matrice du labyrinthe.
+La carte intitulée map.txt est prise en charge dans un « Sélecteur de carte » (Classe MapSelector). Chaque ligne contenue dans carte.txt est ajoutée à une liste initialement vide. Cette étape permet de générer la matrice du labyrinthe.
 
 III°) Jouer au jeu 
 

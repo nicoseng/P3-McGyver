@@ -1,37 +1,37 @@
 #! /usr/bin/env/python3.7.3
 # coding: utf-8 
 
-from mapSelector import MapSelector
-from character import Character
-from itemMgmt import ItemMgmt
-from displayer import Displayer
-from keyMgmt import KeyMgmt
+import map_selector
+import character
+import item_management
+import displayer
+import key_management
 import pygame
 from pygame.locals import *
 from parameters import *
 
 class GameBoard:
 
-	"""This class is used to define the differents elements included in the labyrinth : Map, characters, items"""
+	"""This class is used to define the differents elements included in the labyrinth : Map, characters, items."""
 
 	def __init__(self):
 
-		self.labyrinth = MapSelector()
+		self.labyrinth = map_selector.MapSelector()
 
-		self.macgyver = Character(self.labyrinth.map,0,0)
-		self.guardian = Character(self.labyrinth.map,13,13)
+		self.macgyver = character.Character(self.labyrinth.map,0,0)
+		self.guardian = character.Character(self.labyrinth.map,13,13)
 
-		self.ether = ItemMgmt(self.labyrinth.map)
+		self.ether = item_management.ItemManagement(self.labyrinth.map)
 		self.ether.position_item(self.labyrinth.map,"E")
 
-		self.tube = ItemMgmt(self.labyrinth.map)
+		self.tube = item_management.ItemManagement(self.labyrinth.map)
 		self.tube.position_item(self.labyrinth.map,"T")
 
-		self.needle = ItemMgmt(self.labyrinth.map)
+		self.needle = item_management.ItemManagement(self.labyrinth.map)
 		self.needle.position_item(self.labyrinth.map,"N")
 
-		self.loader = Displayer()
-		self.key_controller = KeyMgmt()
+		self.loader = displayer.Displayer()
+		self.key_controller = key_management.KeyManagement()
 	
 	def load_game(self):
 
@@ -48,7 +48,7 @@ class GameBoard:
 			# We load the map to display it on the game board.
 			self.loader.display_map(self.labyrinth.map)
 
-			# To display the number of items picked by the player on the screen
+			# To display the number of items picked by the player on the screen.
 			self.loader.display_inventory(self.macgyver.inventory)
 			
 			# To activate the keys available for the game.

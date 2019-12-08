@@ -4,7 +4,7 @@
 import pygame
 from pygame.locals import *
 from parameters import *
-from keyMgmt import KeyMgmt
+import key_management
 
 class Displayer:
 	
@@ -27,14 +27,16 @@ class Displayer:
 		self.tube_img = pygame.image.load("ressource/tube.png").convert_alpha()
 		self.needle_img = pygame.image.load("ressource/aiguille.png").convert_alpha()
 
-	# This function aims to display the map graphically on the screen
+	# This function aims to display the map graphically on the screen.
 	def display_map(self,labyrinth):
-
-		line_position = 0 # we start from the first line at the beginning
+		
+		# We start from the first line at the beginning.
+		line_position = 0 
 			
 		for line in labyrinth:
-						
-			element_position = 0 # we start from the first element at the beginning
+			
+			# We start from the first element at the beginning.			
+			element_position = 0 
 			
 			for element in line:
 
@@ -89,7 +91,7 @@ class Displayer:
 		lose_text_rect.centerx, lose_text_rect.centery = labyrinth_size / 2, labyrinth_size / 2 # to center the text
 		self.window.blit(lose_text,lose_text_rect)
 	
-	# to indicate to the player how to exit the game
+	# To indicate to the player how to exit the game.
 	def display_stop_game(self):
 		stop_font = pygame.font.Font("roboto/Roboto-Medium.ttf",20)
 		stop_text = stop_font.render("Press q to exit",True, white)

@@ -6,8 +6,11 @@ class Character:
 	""" This class describes the actions available for the character"""
 
 	def __init__(self,labyrinth,pos_x,pos_y):
-		self.pos_x = pos_x # pos_x stands for position in line
-		self.pos_y = pos_y # pos_y stands for position in column
+		
+		# pos_x stands for position in line.
+		self.pos_x = pos_x 
+		# pos_y stands for position in column
+		self.pos_y = pos_y 
 		self.inventory = []
 		
 	def move_left(self,labyrinth):
@@ -16,9 +19,6 @@ class Character:
 			labyrinth[self.pos_x][self.pos_y - 1] = "M"
 			labyrinth[self.pos_x][self.pos_y] = "_"
 			self.pos_y = self.pos_y - 1
-			
-		else:
-			print("Vous êtes face à un mur, déplacement impossible.")
 
 	def move_right(self,labyrinth):
 		
@@ -26,9 +26,6 @@ class Character:
 			labyrinth[self.pos_x][self.pos_y + 1] = "M"
 			labyrinth[self.pos_x][self.pos_y] = "_"
 			self.pos_y = self.pos_y + 1
-			
-		else:
-			print("Vous êtes face à un mur, déplacement impossible.")
 
 	def move_up(self,labyrinth):
 		
@@ -36,9 +33,6 @@ class Character:
 			labyrinth[self.pos_x - 1][self.pos_y] = "M"
 			labyrinth[self.pos_x][self.pos_y] = "_"
 			self.pos_x = self.pos_x - 1
-	
-		else:
-			print("Vous êtes face à un mur, déplacement impossible.")
 
 	def move_down(self,labyrinth):
 		
@@ -46,9 +40,6 @@ class Character:
 			labyrinth[self.pos_x + 1][self.pos_y] = "M"
 			labyrinth[self.pos_x][self.pos_y] = "_"
 			self.pos_x = self.pos_x + 1
-			
-		else:
-			print("Vous êtes face à un mur, déplacement impossible.")
 		
 	def pick_item(self,labyrinth,symbol):
 		
