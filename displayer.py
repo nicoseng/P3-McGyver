@@ -17,15 +17,15 @@ class Displayer:
 		self.title = pygame.display.set_caption("MacGyver Labyrinth") 
 
 		# Elements of the game
-		self.wall_img = pygame.image.load("resource/wall.png").convert_alpha()
-		self.path_img = pygame.image.load("resource/path.png").convert_alpha()
+		self.wall_img = pygame.image.load("resources/wall.png").convert_alpha()
+		self.path_img = pygame.image.load("resources/path.png").convert_alpha()
 
-		self.macgyver_img = pygame.image.load("resource/macgyver.png").convert_alpha()
-		self.guardian_img = pygame.image.load("resource/guardian.png").convert_alpha()
+		self.macgyver_img = pygame.image.load("resources/macgyver.png").convert_alpha()
+		self.guardian_img = pygame.image.load("resources/guardian.png").convert_alpha()
 
-		self.ether_img = pygame.image.load("resource/ether.png").convert_alpha()
-		self.tube_img = pygame.image.load("resource/tube.png").convert_alpha()
-		self.needle_img = pygame.image.load("resource/aiguille.png").convert_alpha()
+		self.ether_img = pygame.image.load("resources/ether.png").convert_alpha()
+		self.tube_img = pygame.image.load("resources/tube.png").convert_alpha()
+		self.needle_img = pygame.image.load("resources/aiguille.png").convert_alpha()
 
 	# This function aims to display the map graphically on the screen.
 	def display_map(self,labyrinth):
@@ -69,7 +69,7 @@ class Displayer:
 
 	# To display the number of items picked by the character.
 	def display_inventory(self,inventory):
-		item_text_font = pygame.font.Font("resource/roboto/Roboto-Medium.ttf",20)
+		item_text_font = pygame.font.Font("resources/roboto/Roboto-Medium.ttf",20)
 		item_text = item_text_font.render("Items collected : {}/3".format(len(inventory)),True, white)
 		item_text_rect = item_text.get_rect()
 		item_text_rect.centerx, item_text_rect.centery = labyrinth_size / 2,10
@@ -77,7 +77,7 @@ class Displayer:
 
 	# When the player wins the game, we display a victory text.
 	def display_victory_text(self):
-		win_font = pygame.font.Font("resource/roboto/Roboto-Medium.ttf",30)
+		win_font = pygame.font.Font("resources/roboto/Roboto-Medium.ttf",30)
 		win_text = win_font.render("You win !",True, green)
 		win_text_rect = win_text.get_rect()
 		win_text_rect.centerx, win_text_rect.centery = labyrinth_size / 2, labyrinth_size / 2 # to center the text
@@ -85,7 +85,7 @@ class Displayer:
 
 	# When the player loses the game, we display a failure text.
 	def display_failure_text(self):
-		lose_font = pygame.font.Font("resource/roboto/Roboto-Medium.ttf",30)
+		lose_font = pygame.font.Font("resources/roboto/Roboto-Medium.ttf",30)
 		lose_text = lose_font.render("You lose !",True, red)
 		lose_text_rect = lose_text.get_rect()
 		lose_text_rect.centerx, lose_text_rect.centery = labyrinth_size / 2, labyrinth_size / 2 # to center the text
@@ -93,7 +93,7 @@ class Displayer:
 	
 	# To indicate to the player how to exit the game.
 	def display_stop_game(self):
-		stop_font = pygame.font.Font("resource/roboto/Roboto-Medium.ttf",20)
+		stop_font = pygame.font.Font("resources/roboto/Roboto-Medium.ttf",20)
 		stop_text = stop_font.render("Press q to exit",True, white)
 		stop_text_rect = stop_text.get_rect()
 		stop_text_rect.centerx, stop_text_rect.centery = labyrinth_size / 2, labyrinth_size / 3 # to center the text
